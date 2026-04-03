@@ -1,15 +1,24 @@
 @import "tailwindcss";
 
+:root {
+  --background: #191919;
+}
+
+@theme inline {
+  --color-background: var(--background);
+}
+
 @layer base {
   * {
     /* @apply border-border outline-ring/50; */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    cursor: none;
   }
 
   body {
-    /* @apply bg-background text-foreground; */
+    @apply bg-background;
     font-family:
       -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
       "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
