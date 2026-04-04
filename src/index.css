@@ -1,11 +1,59 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "DM Sans";
+  src: url("./assests/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("./assests/fonts/DM_Sans/DMSans-Italic-VariableFont_opsz,wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("./assests/fonts/DM_Sans/static/DMSans-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("./assests/fonts/DM_Sans/static/DMSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("./assests/fonts/DM_Sans/static/DMSans-Italic.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
-  --background: #191919;
+  --background: #1a1a1a;
+  --primary: #fff;
+  --highlight: #b80e1f;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-primary: var(--primary);
+  --color-highlight: var(--highlight);
 }
 
 @layer base {
@@ -18,7 +66,7 @@
   }
 
   body {
-    @apply bg-background;
+    @apply bg-background text-primary;
     font-family:
       -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
       "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -36,6 +84,8 @@
     font-size: var(--font-size);
     scroll-behavior: smooth;
     color-scheme: light;
+    background: #1a1a1a;
+    font-family: "DM Sans", sans-serif;
   }
 
   html.dark {
