@@ -352,7 +352,8 @@ export default function BubbleMenu({
                       minHeight: 'var(--pill-min-h, 160px)',
                       padding: 'clamp(1.5rem, 3vw, 8rem) 0',
                       fontSize: 'clamp(1.5rem, 4vw, 4rem)',
-                      fontWeight: 400,
+                      fontFamily: 'var(--font-display)',
+                      fontWeight: 500,
                       lineHeight: 0,
                       willChange: 'transform',
                       height: 10

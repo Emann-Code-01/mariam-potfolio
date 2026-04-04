@@ -1,76 +1,102 @@
 import BubbleMenu from "../ui/BubbleMenu"
 import PillNav from '../ui/PillNav';
 
+// Palette tokens (keeping in sync with CSS variables)
+const HIGHLIGHT   = '#C96B5A';   // terracotta accent
+const SURFACE     = '#17171A';   // dark surface  (pill bg on desktop)
+const PRIMARY     = '#F5F0E8';   // warm ivory    (text / pill text)
+const SURFACE_SUB = '#1E1E22';   // slightly lifted (nav track)
+
+const BG = SURFACE_SUB;          // nav bar background
+const PILL_BG = SURFACE;         // each pill
+const PILL_TEXT = PRIMARY;       // resting pill label
+const HOVER_TEXT = PRIMARY;      // label colour when circle fills
+
 const items = [
   {
     label: 'home',
     href: '#',
     ariaLabel: 'Home',
-    rotation: -8,
-    hoverStyles: { bgColor: '#3b82f6', textColor: '#ffffff' }
+    rotation: -6,
+    hoverStyles: { bgColor: HIGHLIGHT, textColor: PRIMARY }
   },
   {
     label: 'about',
     href: '#',
     ariaLabel: 'About',
-    rotation: 8,
-    hoverStyles: { bgColor: '#10b981', textColor: '#ffffff' }
+    rotation: 6,
+    hoverStyles: { bgColor: '#7C8B78', textColor: PRIMARY }  // muted sage
   },
   {
     label: 'projects',
     href: '#',
     ariaLabel: 'Projects',
-    rotation: 8,
-    hoverStyles: { bgColor: '#f59e0b', textColor: '#ffffff' }
+    rotation: 6,
+    hoverStyles: { bgColor: '#6B7FA6', textColor: PRIMARY }  // muted slate-blue
   },
   {
     label: 'blog',
     href: '#',
     ariaLabel: 'Blog',
-    rotation: 8,
-    hoverStyles: { bgColor: '#ef4444', textColor: '#ffffff' }
+    rotation: 6,
+    hoverStyles: { bgColor: '#A67C52', textColor: PRIMARY }  // warm amber-brown
   },
   {
     label: 'contact',
     href: '#',
     ariaLabel: 'Contact',
-    rotation: -8,
-    hoverStyles: { bgColor: '#8b5cf6', textColor: '#ffffff' }
-  }
+    rotation: -6,
+    hoverStyles: { bgColor: HIGHLIGHT, textColor: PRIMARY }
+  },
 ];
 
 export default function Navbar() {
   return (
     <>
+      {/* ── Mobile: BubbleMenu ─────────────────────────────────────────────── */}
       <BubbleMenu
         className="md:hidden flex items-center justify-between"
-        logo={<span style={{ fontWeight: 700 }}>RB</span>}
+        logo={
+          <span
+            style={{
+              fontFamily: '"Cormorant Garamond", Georgia, serif',
+              fontWeight: 700,
+              fontStyle: 'italic',
+              fontSize: '1.1rem',
+              color: PRIMARY,
+              letterSpacing: '0.01em',
+            }}
+          >
+            MB
+          </span>
+        }
         items={items}
         menuAriaLabel="Toggle navigation"
-        menuBg="#ffffff"
-        menuContentColor="#111111"
+        menuBg={SURFACE}
+        menuContentColor={PRIMARY}
         useFixedPosition={false}
         animationEase="back.out(1.5)"
         animationDuration={0.5}
-        staggerDelay={0.12}
+        staggerDelay={0.1}
       />
+
+      {/* ── Desktop: PillNav ──────────────────────────────────────────────── */}
       <PillNav
         logo='/mariam.png'
-        logoAlt="Company Logo"
+        logoAlt="Mariam Bhadmus"
         items={[
-          { label: 'Home', href: '/' },
-          { label: 'About', href: '/about' },
-          { label: 'Services', href: '/services' },
-          { label: 'Contact', href: '/contact' }
+          { label: 'Home',    href: '/' },
+          { label: 'About',   href: '/about' },
+          { label: 'Projects', href: '/projects' },
+          { label: 'Contact', href: '/contact' },
         ]}
         activeHref="/"
         className="md:flex hidden items-center justify-center gap-6"
         ease="power2.easeOut"
-        baseColor="#000000"
-        pillColor="#ffffff"
-        hoveredPillTextColor="#ffffff"
-        pillTextColor="#000000"
-        // theme="dark"
+        baseColor={BG}
+        pillColor={PILL_BG}
+        hoveredPillTextColor={HOVER_TEXT}
+        pillTextColor={PILL_TEXT}
         initialLoadAnimation
       />
     </>

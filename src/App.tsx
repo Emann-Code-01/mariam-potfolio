@@ -1,11 +1,15 @@
 import Particles from '@/components/ui/Particles'
 import Navbar from '@/components/global/Navbar';
-import HeroSection from '@/components/sections/HeroSection';
-
+import HeroSection from '@/sections/HeroSection';
+import AboutSection from './sections/AboutSection';
 
 import AnimatedCursor from 'react-animated-cursor'
 
 import { useEffect, useRef, useState } from 'react';
+
+// Terracotta at low opacity for the touch ripple (matches --highlight)
+const TOUCH_RIPPLE_COLOR = 'rgba(201, 107, 90, 0.25)';
+const TOUCH_RIPPLE_BORDER = 'rgba(245, 240, 232, 0.35)'; // ivory
 
 function TouchRipple() {
   const rippleRef = useRef<HTMLDivElement>(null);
@@ -43,8 +47,8 @@ function TouchRipple() {
         width: 38,
         height: 38,
         borderRadius: '50%',
-        border: '1.5px solid rgba(250,250,250,0.5)',
-        backgroundColor: 'rgba(250,250,250,0.15)',
+        border: `1.5px solid ${TOUCH_RIPPLE_BORDER}`,
+        backgroundColor: TOUCH_RIPPLE_COLOR,
         transform: 'translate(-50%, -50%)',
         pointerEvents: 'none',
         transition: 'opacity 0.3s ease',
@@ -82,15 +86,24 @@ export default function App() {
         <TouchRipple />
       ) : (
         <AnimatedCursor
-          innerSize={8}
-          outerSize={38}
+          innerSize={7}
+          outerSize={36}
           innerScale={1}
-          outerScale={2}
-          color='250, 250, 250'
-          outerAlpha={0.3}
+          outerScale={2.2}
+          // Warm ivory inner dot, terracotta outer ring
+          color='245, 240, 232'
+          outerStyle={{
+            border: '1.5px solid rgba(201, 107, 90, 0.6)',
+            backgroundColor: 'transparent',
+          }}
+          innerStyle={{
+            backgroundColor: 'rgba(245, 240, 232, 0.9)',
+          }}
+          outerAlpha={0}
         />
       )}
-      {/* Background - sits behind everything */}
+
+      {/* Particle background — muted warm dots */}
       <div style={{
         position: 'fixed',
         top: 0,
@@ -100,23 +113,26 @@ export default function App() {
         zIndex: 0,
       }}>
         <Particles
-          particleColors={["#ffffff"]}
-          particleCount={600}
-          particleSpread={13}
-          speed={0.2}
-          particleBaseSize={100}
+          particleColors={['#F5F0E8', '#C96B5A']}
+          particleCount={400}
+          particleSpread={14}
+          speed={0.15}
+          particleBaseSize={80}
           moveParticlesOnHover
-          alphaParticles={false}
+          alphaParticles
           disableRotation={false}
           pixelRatio={1}
         />
       </div>
 
-      {/* All your page sections go here */}
-      <div className=' z-1000 max-w-440 mx-auto relative' style={{ zIndex: 1 }}>
+      {/* Page content */}
+      <div className='relative' style={{ zIndex: 1 }}>
         <Navbar />
-        <div>
+        <div className='max-w-7xl mx-auto relative space-y-0 px-4 md:px-8 lg:px-12'>
           <HeroSection />
+          <AboutSection />
+          {/* Bottom breathing room */}
+          <div style={{ height: '8rem' }} />
         </div>
       </div>
     </>

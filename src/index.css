@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @font-face {
@@ -18,119 +19,193 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: "DM Sans";
-  src: url("./assests/fonts/DM_Sans/static/DMSans-Regular.ttf")
-    format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "DM Sans";
-  src: url("./assests/fonts/DM_Sans/static/DMSans-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "DM Sans";
-  src: url("./assests/fonts/DM_Sans/static/DMSans-Italic.ttf")
-    format("truetype");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
+/* ─── Design Tokens ────────────────────────────────────────────────────────── */
 
 :root {
-  --background: #1a1a1a;
-  --primary: #fff;
-  --highlight: #b80e1f;
+  /* Palette */
+  --background:      #0F0F11;         /* inky charcoal */
+  --surface:         #17171A;         /* card / lifted surface */
+  --surface-subtle:  #1E1E22;         /* borders, dividers */
+  --primary:         #F5F0E8;         /* warm ivory — main text */
+  --muted:           #9A9490;         /* secondary / caption text */
+  --faint:           #3A3935;         /* ghost elements */
+  --highlight:       #C96B5A;         /* terracotta accent */
+  --highlight-dim:   rgba(201, 107, 90, 0.18);
+
+  /* Typography */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body:    "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Type scale — fluid where it matters */
+  --text-hero:    clamp(3.5rem, 9vw, 7.5rem);   /* h1 hero name */
+  --text-display: clamp(2.25rem, 5vw, 4rem);     /* section headings */
+  --text-title:   clamp(1.5rem, 3vw, 2.25rem);   /* sub-headings */
+  --text-lead:    1.25rem;                        /* intro / tagline */
+  --text-body:    1rem;                           /* body copy */
+  --text-sm:      0.875rem;                       /* labels, captions */
+  --text-xs:      0.75rem;                        /* micro labels */
+
+  /* Leading */
+  --leading-tight:  1.12;
+  --leading-snug:   1.3;
+  --leading-normal: 1.6;
+
+  /* Letter spacing */
+  --tracking-display: -0.025em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.06em;
+  --tracking-widest:  0.12em;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-primary: var(--primary);
-  --color-highlight: var(--highlight);
+  --color-background:     var(--background);
+  --color-surface:        var(--surface);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-primary:        var(--primary);
+  --color-muted:          var(--muted);
+  --color-faint:          var(--faint);
+  --color-highlight:      var(--highlight);
 }
 
+/* ─── Base Reset ───────────────────────────────────────────────────────────── */
+
 @layer base {
-  * {
-    /* @apply border-border outline-ring/50; */
+  *,
+  *::before,
+  *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     cursor: none;
   }
 
-  body {
-    @apply bg-background text-primary;
-    font-family:
-      -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-      sans-serif;
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+    background: var(--background);
+    font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
-  /**
-  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
-  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
-  */
-
-  html {
-    font-size: var(--font-size);
-    scroll-behavior: smooth;
-    color-scheme: light;
-    background: #1a1a1a;
-    font-family: "DM Sans", sans-serif;
+  body {
+    background: var(--background);
+    color: var(--primary);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: var(--leading-normal);
+    font-weight: 400;
   }
 
-  html.dark {
-    color-scheme: dark;
-  }
+  /* ── Heading hierarchy ─────────────────────────────────────────────────── */
 
   h1 {
-    font-size: var(--text-2xl);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
+    font-family: var(--font-display);
+    font-size: var(--text-hero);
+    font-weight: 600;
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-display);
+    color: var(--primary);
   }
 
   h2 {
-    font-size: var(--text-xl);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
+    font-family: var(--font-display);
+    font-size: var(--text-display);
+    font-weight: 500;
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-display);
+    color: var(--primary);
   }
 
   h3 {
-    font-size: var(--text-lg);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
+    font-family: var(--font-display);
+    font-size: var(--text-title);
+    font-weight: 400;
+    line-height: var(--leading-snug);
+    letter-spacing: -0.01em;
+    color: var(--primary);
   }
 
   h4 {
-    font-size: var(--text-base);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
+    font-family: var(--font-body);
+    font-size: var(--text-lead);
+    font-weight: 600;
+    line-height: var(--leading-snug);
+    color: var(--primary);
+  }
+
+  p {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: var(--leading-normal);
+    color: var(--primary);
   }
 
   label {
-    font-size: var(--text-base);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--muted);
   }
 
   button {
-    font-size: var(--text-base);
-    font-weight: var(--font-weight-medium);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: var(--tracking-wide);
     line-height: 1.5;
   }
 
-  input {
-    font-size: var(--text-base);
-    font-weight: var(--font-weight-normal);
-    line-height: 1.5;
+  input, textarea {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    font-weight: 400;
+    line-height: var(--leading-normal);
   }
+
+  /* ── Utility overrides ──────────────────────────────────────────────────── */
+
+  ::selection {
+    background: var(--highlight-dim);
+    color: var(--primary);
+  }
+}
+
+/* ─── Global Utility Classes ──────────────────────────────────────────────── */
+
+/* Caption / micro-label */
+.text-caption {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Eyebrow label above section headings */
+.text-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--highlight);
+}
+
+/* Display italic accent (for "Bhadmus" etc.) */
+.text-accent-italic {
+  font-style: italic;
+  color: var(--highlight);
+  font-weight: 600;
+}
+
+/* Section divider */
+.divider {
+  border: none;
+  border-top: 1px solid var(--surface-subtle);
+  margin: 0;
 }
