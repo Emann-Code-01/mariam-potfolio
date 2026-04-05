@@ -1,6 +1,21 @@
 export default function HeroSection() {
   return (
-    <div className="relative mt-8 md:mt-32 flex flex-col items-center gap-6 justify-center mx-6 md:mx-0">
+    <div id="home" className="relative mt-8 md:mt-32 flex flex-col items-center gap-6 justify-center mx-6 md:mx-0">
+      {/* Designer Signature Watermark */}
+      <div className="hidden lg:block absolute -right-12 top-0 pointer-events-none select-none overflow-hidden h-full">
+        <span className="text-[9px] font-bold tracking-[1em] text-faint uppercase vertical-text opacity-20">
+          Handcrafted by @EmannCode — 2024
+        </span>
+      </div>
+
+      {/* Decorative Grid Detail (Marginalia) */}
+      <div
+        className="hidden xl:flex absolute -left-20 top-24 transform -rotate-90 origin-bottom-left items-center gap-4 text-xs font-bold tracking-[0.4em] text-faint uppercase"
+        style={{ letterSpacing: '0.6em' }}
+      >
+        <span className="w-12 h-px bg-faint" />
+        <span>Welcome / 00</span>
+      </div>
 
       {/* ── Mobile layout ─────────────────────────────────────────────────── */}
       <div className="flex flex-col justify-center items-center md:hidden space-y-8 text-center">

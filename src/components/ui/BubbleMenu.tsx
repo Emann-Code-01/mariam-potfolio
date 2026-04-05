@@ -89,7 +89,6 @@ export default function BubbleMenu({
 
   const containerClassName = [
     'bubble-menu',
-    // 'left-0 right-0 top-8',
     'flex items-center justify-between',
     'gap-4 px-8',
     'pointer-events-none',
@@ -116,9 +115,9 @@ export default function BubbleMenu({
     if (isMenuOpen) {
       gsap.set([backdrop, container], { display: 'flex' });
       gsap.killTweensOf([backdrop, ...bubbles, ...labels]);
-      
-      gsap.fromTo(backdrop, 
-        { opacity: 0 }, 
+
+      gsap.fromTo(backdrop,
+        { opacity: 0 },
         { opacity: 1, duration: 0.4, ease: 'power2.out' }
       );
 
@@ -148,14 +147,14 @@ export default function BubbleMenu({
       });
     } else if (showOverlay) {
       gsap.killTweensOf([backdrop, ...bubbles, ...labels]);
-      
+
       gsap.to(labels, {
         y: 24,
         autoAlpha: 0,
         duration: 0.2,
         ease: 'power3.in'
       });
-      
+
       gsap.to(bubbles, {
         scale: 0,
         duration: 0.2,
@@ -194,7 +193,6 @@ export default function BubbleMenu({
 
   return (
     <div>
-      {/* Workaround for silly Tailwind capabilities */}
       <style>{`
         .bubble-menu .menu-line {
           transition: transform 0.3s ease, opacity 0.3s ease;
@@ -333,6 +331,7 @@ export default function BubbleMenu({
                   'flex-[0_0_calc(100%/3)]',
                   'box-border'
                 ].join(' ')}
+                onClick={handleToggle}
               >
                 <a
                   role="menuitem"

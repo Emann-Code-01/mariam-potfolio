@@ -1,49 +1,48 @@
 import BubbleMenu from "../ui/BubbleMenu"
 import PillNav from '../ui/PillNav';
 
-// Palette tokens (keeping in sync with CSS variables)
-const HIGHLIGHT = '#C96B5A';   // terracotta accent
-const SURFACE = '#17171A';   // dark surface  (pill bg on desktop)
-const PRIMARY = '#F5F0E8';   // warm ivory    (text / pill text)
-const SURFACE_SUB = '#1E1E22';   // slightly lifted (nav track)
+const HIGHLIGHT = '#C96B5A';
+const SURFACE = '#17171A';
+const PRIMARY = '#F5F0E8';
+const SURFACE_SUB = '#1E1E22';
 
-const BG = SURFACE_SUB;          // nav bar background
-const PILL_BG = SURFACE;         // each pill
-const PILL_TEXT = PRIMARY;       // resting pill label
-const HOVER_TEXT = PRIMARY;      // label colour when circle fills
+const BG = SURFACE_SUB;
+const PILL_BG = SURFACE;
+const PILL_TEXT = PRIMARY;
+const HOVER_TEXT = PRIMARY;
 
 const items = [
   {
     label: 'home',
-    href: '#',
+    href: '#home',
     ariaLabel: 'Home',
     rotation: -6,
     hoverStyles: { bgColor: HIGHLIGHT, textColor: PRIMARY }
   },
   {
     label: 'about',
-    href: '#',
+    href: '#about',
     ariaLabel: 'About',
     rotation: 6,
-    hoverStyles: { bgColor: '#7C8B78', textColor: PRIMARY }  // muted sage
+    hoverStyles: { bgColor: '#7C8B78', textColor: PRIMARY }
   },
   {
     label: 'projects',
-    href: '#',
+    href: '#projects',
     ariaLabel: 'Projects',
     rotation: 6,
-    hoverStyles: { bgColor: '#6B7FA6', textColor: PRIMARY }  // muted slate-blue
+    hoverStyles: { bgColor: '#6B7FA6', textColor: PRIMARY }
   },
   {
-    label: 'blog',
-    href: '#',
-    ariaLabel: 'Blog',
+    label: 'skills',
+    href: '#skills',
+    ariaLabel: 'Skills',
     rotation: 6,
-    hoverStyles: { bgColor: '#A67C52', textColor: PRIMARY }  // warm amber-brown
+    hoverStyles: { bgColor: '#A67C52', textColor: PRIMARY }
   },
   {
     label: 'contact',
-    href: '#',
+    href: '#contact',
     ariaLabel: 'Contact',
     rotation: -6,
     hoverStyles: { bgColor: HIGHLIGHT, textColor: PRIMARY }
@@ -53,7 +52,6 @@ const items = [
 export default function Navbar() {
   return (
     <div className="sticky top-3 z-1001">
-      {/* ── Mobile: BubbleMenu ─────────────────────────────────────────────── */}
       <BubbleMenu
         className="md:hidden flex items-center justify-between"
         logo={
@@ -79,17 +77,11 @@ export default function Navbar() {
         staggerDelay={0.1}
       />
 
-      {/* ── Desktop: PillNav ──────────────────────────────────────────────── */}
       <PillNav
         logo='/mariam.png'
         logoAlt="Mariam Bhadmus"
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'About', href: '/about' },
-          { label: 'Projects', href: '/projects' },
-          { label: 'Contact', href: '/contact' },
-        ]}
-        activeHref="/"
+        items={items}
+        activeHref="#home"
         className="md:flex hidden items-center justify-center gap-6"
         ease="power2.easeOut"
         baseColor={BG}
@@ -99,5 +91,5 @@ export default function Navbar() {
         initialLoadAnimation
       />
     </div>
-  )
+  );
 }

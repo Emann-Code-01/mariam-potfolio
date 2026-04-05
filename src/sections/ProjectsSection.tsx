@@ -95,7 +95,6 @@ export default function ProjectsSection() {
       className="relative mt-24 md:mt-48 mx-6 md:mx-0 py-20"
       aria-labelledby="projects-heading"
     >
-      {/* Marginalia Detail */}
       <div
         className="hidden xl:flex absolute -left-20 top-24 transform -rotate-90 origin-bottom-left items-center gap-4 text-xs font-bold tracking-[0.4em] text-faint uppercase"
         style={{ letterSpacing: '0.6em' }}
@@ -126,16 +125,14 @@ export default function ProjectsSection() {
             key={project.id}
             className="group flex flex-col gap-12 lg:gap-20 transition-opacity duration-700"
           >
-            {/* Project Banner Area */}
             <div className="relative overflow-hidden rounded-[2.5rem] border border-surface-subtle bg-surface shadow-2xl group-hover:border-highlight/30 transition-colors duration-500">
               <img
                 src={project.banner}
                 alt={project.title}
-                className="w-full h-[300px] md:h-[500px] object-cover transition-transform duration-1000 group-hover:scale-105"
+                className="w-full h-75 md:h-125 object-cover transition-transform duration-1000 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-linear-to-t from-background/90 via-background/10 to-transparent pointer-events-none" />
 
-              {/* Overlay Label on Hover */}
               <div className="absolute top-8 left-8 flex items-center gap-3">
                 <span className="bg-highlight text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest flex items-center gap-2">
                   <FaTag className="w-2.5 h-2.5" /> {project.id}
@@ -146,9 +143,7 @@ export default function ProjectsSection() {
               </div>
             </div>
 
-            {/* Content Area */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-              {/* Left Column: Title & Overview */}
               <div className="lg:col-span-5 flex flex-col gap-8">
                 <h3 className="text-3xl md:text-5xl font-semibold leading-tight font-display text-primary tracking-tight">
                   <span className="text-highlight font-display opacity-40 mr-4 italic text-2xl md:text-4xl">{project.id}.</span>
@@ -158,7 +153,6 @@ export default function ProjectsSection() {
                   {project.overview}
                 </p>
 
-                {/* Metrics Grid */}
                 <div className="grid grid-cols-2 gap-4 mt-4">
                   {project.metrics.map((m, i) => (
                     <div key={i} className="p-4 rounded-2xl bg-surface/40 border border-white/5 group-hover:border-highlight/10 transition-colors duration-300">
@@ -169,7 +163,6 @@ export default function ProjectsSection() {
                 </div>
               </div>
 
-              {/* Right Column: Key Details */}
               <div className="lg:col-span-7 flex flex-col gap-10">
                 <div className="flex flex-col gap-6">
                   <h4 className="flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-highlight">
@@ -185,7 +178,6 @@ export default function ProjectsSection() {
                   </ul>
                 </div>
 
-                {/* Visual Action */}
                 <div className="mt-4">
                   <span className="inline-flex items-center gap-4 text-sm font-bold uppercase tracking-widest text-primary/20 group-hover:text-highlight transition-colors duration-500 cursor-default select-none">
                     <span className="w-12 h-px bg-white/10 group-hover:bg-highlight/50 transition-colors duration-500" />
@@ -195,7 +187,6 @@ export default function ProjectsSection() {
               </div>
             </div>
 
-            {/* Footer Divider (between items) */}
             {idx < PROJECTS.length - 1 && (
               <div className="divider-dashed opacity-20 mt-12" />
             )}

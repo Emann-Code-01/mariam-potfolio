@@ -4,14 +4,12 @@ import HeroSection from '@/sections/HeroSection';
 import AboutSection from './sections/AboutSection';
 import SkillsSection from './sections/SkillsSection';
 import ProjectsSection from './sections/ProjectsSection';
-
+import ContactSection from './sections/ContactSection';
 import AnimatedCursor from 'react-animated-cursor'
-
 import { useEffect, useRef, useState } from 'react';
 
-// Terracotta at low opacity for the touch ripple (matches --highlight)
 const TOUCH_RIPPLE_COLOR = 'rgba(201, 107, 90, 0.25)';
-const TOUCH_RIPPLE_BORDER = 'rgba(245, 240, 232, 0.35)'; // ivory
+const TOUCH_RIPPLE_BORDER = 'rgba(245, 240, 232, 0.35)';
 
 function TouchRipple() {
   const rippleRef = useRef<HTMLDivElement>(null);
@@ -92,7 +90,6 @@ export default function App() {
           outerSize={36}
           innerScale={1}
           outerScale={2.2}
-          // Warm ivory inner dot, terracotta outer ring
           color='245, 240, 232'
           outerStyle={{
             border: '1.5px solid rgba(201, 107, 90, 0.6)',
@@ -105,7 +102,6 @@ export default function App() {
         />
       )}
 
-      {/* Particle background — muted warm dots */}
       <div style={{
         position: 'fixed',
         top: 0,
@@ -127,7 +123,6 @@ export default function App() {
         />
       </div>
 
-      {/* Page content */}
       <div className='relative' style={{ zIndex: 1 }}>
         <Navbar />
         <div className='max-w-7xl mx-auto relative space-y-0 px-4 md:px-8 lg:px-12'>
@@ -135,8 +130,7 @@ export default function App() {
           <AboutSection />
           <SkillsSection />
           <ProjectsSection />
-          {/* Bottom breathing room */}
-          <div style={{ height: '8rem' }} />
+          <ContactSection />
         </div>
       </div>
     </>

@@ -23,6 +23,7 @@ const SOCIAL_LINKS = [
 export default function AboutSection() {
   return (
     <section
+      id="about"
       className="relative mt-16 md:mt-32 mx-6 md:mx-0"
       aria-labelledby="about-section"
     >
@@ -32,7 +33,7 @@ export default function AboutSection() {
         style={{ letterSpacing: '0.6em' }}
       >
         <span className="w-12 h-px bg-faint" />
-        <span>Data Analyst Portfolio</span>
+        <span>About Me / 01</span>
       </div>
 
       {/* Section divider */}

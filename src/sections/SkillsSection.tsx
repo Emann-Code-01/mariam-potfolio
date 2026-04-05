@@ -52,7 +52,7 @@ const METHODS = [
 export default function SkillsSection() {
   return (
     <section
-      id="skills-section"
+      id="skills"
       className="relative mt-16 md:mt-32 mx-6 md:mx-0"
       aria-labelledby="skills-heading"
     >
