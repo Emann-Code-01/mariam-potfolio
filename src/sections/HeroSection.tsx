@@ -7,7 +7,7 @@ export default function HeroSection() {
         {/* Portrait */}
         <div className="relative">
           <div
-            className="rounded-full p-[3px] inline-block"
+            className="rounded-full p-0.75 inline-block"
             style={{
               background: 'linear-gradient(160deg, var(--surface-subtle) 0%, var(--highlight) 100%)',
               boxShadow: '0 0 48px rgba(201, 107, 90, 0.25)',
@@ -61,7 +61,7 @@ export default function HeroSection() {
               marginTop: '0.5rem',
             }}
           >
-            An analyst that turns raw data
+            A analyst that turns raw data
             <br />
             into insights that{' '}
             <em style={{ color: 'var(--primary)', fontStyle: 'italic', fontFamily: 'var(--font-display)', fontSize: '1.35rem' }}>
@@ -124,7 +124,7 @@ export default function HeroSection() {
         {/* Portrait */}
         <div className="relative shrink-0">
           <div
-            className="rounded-full p-[3px] inline-block"
+            className="rounded-full p-0.75 inline-block"
             style={{
               background: 'linear-gradient(160deg, var(--surface-subtle) 0%, var(--highlight) 100%)',
               boxShadow: '0 0 80px rgba(201, 107, 90, 0.2), 0 0 24px rgba(201, 107, 90, 0.12)',

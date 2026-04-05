@@ -52,7 +52,7 @@ const items = [
 
 export default function Navbar() {
   return (
-    <>
+    <div className="sticky top-0 z-1001">
       {/* ── Mobile: BubbleMenu ─────────────────────────────────────────────── */}
       <BubbleMenu
         className="md:hidden flex items-center justify-between"
@@ -74,7 +74,6 @@ export default function Navbar() {
         menuAriaLabel="Toggle navigation"
         menuBg={SURFACE}
         menuContentColor={PRIMARY}
-        useFixedPosition={false}
         animationEase="back.out(1.5)"
         animationDuration={0.5}
         staggerDelay={0.1}
@@ -99,6 +98,6 @@ export default function Navbar() {
         pillTextColor={PILL_TEXT}
         initialLoadAnimation
       />
-    </>
+    </div>
   )
 }

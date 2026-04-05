@@ -1,3 +1,24 @@
+import React from 'react';
+import { FaLinkedin, FaWhatsapp, FaRegFileLines } from "react-icons/fa6";
+import { GiMailbox } from "react-icons/gi";
+
+const SOCIAL_LINKS = [
+  {
+    title: 'Linkedin',
+    href: 'https://www.linkedin.com/in/bhadmus-mariam-6b7250277?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+    logo: <FaLinkedin />,
+  },
+  {
+    title: 'Whatsapp',
+    href: 'https://wa.me/2347045982641',
+    logo: <FaWhatsapp />,
+  },
+  {
+    title: 'Gmail',
+    href: 'mailto:bhadmusmariam590@gmail.com',
+    logo: <GiMailbox />,
+  },
+]
 
 export default function AboutSection() {
   return (
@@ -115,7 +136,7 @@ export default function AboutSection() {
             }}
           >
             My projects focus on real-world problems — business performance,
-            customer behaviour, and data trends relevant to Nigeria. I believe
+            customer behaviour, and data trends across diverse datasets. I believe
             that{' '}
             <em
               style={{
@@ -129,6 +150,52 @@ export default function AboutSection() {
             </em>{' '}
             that can influence strategy and growth.
           </p>
+          {/* Links and Actions */}
+          <div className="flex flex-wrap items-center gap-6 mt-12">
+            {/* Social Circle Icons */}
+            <div className="flex items-center gap-4">
+              {SOCIAL_LINKS.map((item) => (
+                <a
+                  key={item.title}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative flex items-center justify-center w-12 h-12 rounded-full border border-surface-subtle bg-surface transition-all duration-500 hover:border-highlight hover:bg-highlight-dim hover:-translate-y-1"
+                  aria-label={item.title}
+                >
+                  <span className="text-muted group-hover:text-highlight transition-colors duration-300">
+                    {React.isValidElement(item.logo) 
+                      ? React.cloneElement(item.logo as React.ReactElement<{ size?: number }>, { size: 20 }) 
+                      : item.logo}
+                  </span>
+                </a>
+              ))}
+            </div>
+
+            {/* Visual Divider on Desktop */}
+            <div className="hidden sm:block h-8 w-px bg-surface-subtle mx-2" />
+
+            {/* Direct Actions */}
+            <div className="flex flex-wrap items-center gap-8">
+              <a 
+                href="#projects" 
+                className="group relative inline-block text-sm font-semibold tracking-widest uppercase text-muted hover:text-primary transition-colors duration-300"
+              >
+                View Projects
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-highlight transition-all duration-300 group-hover:w-full" />
+              </a>
+
+              <a
+                href="https://drive.google.com/file/d/1-oJD9nn3_I7LUtYqrV7lfpL051uLKTJD/view?usp=drivesdk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-3 px-8 py-3 rounded-full border border-highlight bg-highlight-dim text-highlight hover:bg-highlight hover:text-primary transition-all duration-500 shadow-[0_0_25px_rgba(201,107,90,0.1)] hover:shadow-[0_0_35px_rgba(201,107,90,0.25)]"
+              >
+                <FaRegFileLines className="w-4 h-4 transition-transform group-hover:scale-110" />
+                <span className="text-sm font-bold tracking-wide">View Resume</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

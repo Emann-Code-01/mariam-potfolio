@@ -21,7 +21,6 @@ export type BubbleMenuProps = {
   menuAriaLabel?: string;
   menuBg?: string;
   menuContentColor?: string;
-  useFixedPosition?: boolean;
   items?: MenuItem[];
   animationEase?: string;
   animationDuration?: number;
@@ -73,7 +72,6 @@ export default function BubbleMenu({
   menuAriaLabel = 'Toggle menu',
   menuBg = '#fff',
   menuContentColor = '#111',
-  useFixedPosition = false,
   items,
   animationEase = 'back.out(1.5)',
   animationDuration = 0.5,
@@ -82,7 +80,8 @@ export default function BubbleMenu({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
 
-  const overlayRef = useRef<HTMLDivElement>(null);
+  const backdropRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const bubblesRef = useRef<HTMLAnchorElement[]>([]);
   const labelRefs = useRef<HTMLSpanElement[]>([]);
 
@@ -90,7 +89,6 @@ export default function BubbleMenu({
 
   const containerClassName = [
     'bubble-menu',
-    // useFixedPosition ? 'fixed' : 'absolute',
     // 'left-0 right-0 top-8',
     'flex items-center justify-between',
     'gap-4 px-8',
@@ -109,14 +107,21 @@ export default function BubbleMenu({
   };
 
   useEffect(() => {
-    const overlay = overlayRef.current;
+    const backdrop = backdropRef.current;
+    const container = containerRef.current;
     const bubbles = bubblesRef.current.filter(Boolean);
     const labels = labelRefs.current.filter(Boolean);
-    if (!overlay || !bubbles.length) return;
+    if (!backdrop || !container || !bubbles.length) return;
 
     if (isMenuOpen) {
-      gsap.set(overlay, { display: 'flex' });
-      gsap.killTweensOf([...bubbles, ...labels]);
+      gsap.set([backdrop, container], { display: 'flex' });
+      gsap.killTweensOf([backdrop, ...bubbles, ...labels]);
+      
+      gsap.fromTo(backdrop, 
+        { opacity: 0 }, 
+        { opacity: 1, duration: 0.4, ease: 'power2.out' }
+      );
+
       gsap.set(bubbles, { scale: 0, transformOrigin: '50% 50%' });
       gsap.set(labels, { y: 24, autoAlpha: 0 });
 
@@ -142,19 +147,27 @@ export default function BubbleMenu({
         }
       });
     } else if (showOverlay) {
-      gsap.killTweensOf([...bubbles, ...labels]);
+      gsap.killTweensOf([backdrop, ...bubbles, ...labels]);
+      
       gsap.to(labels, {
         y: 24,
         autoAlpha: 0,
         duration: 0.2,
         ease: 'power3.in'
       });
+      
       gsap.to(bubbles, {
         scale: 0,
         duration: 0.2,
-        ease: 'power3.in',
+        ease: 'power3.in'
+      });
+
+      gsap.to(backdrop, {
+        opacity: 0,
+        duration: 0.3,
+        ease: 'power2.in',
         onComplete: () => {
-          gsap.set(overlay, { display: 'none' });
+          gsap.set([backdrop, container], { display: 'none' });
           setShowOverlay(false);
         }
       });
@@ -236,12 +249,12 @@ export default function BubbleMenu({
       `}</style>
 
       <div
-        ref={overlayRef}
+        ref={backdropRef}
         className={[
-          // useFixedPosition ? 'fixed' : 'absolute',
-          showOverlay ? 'bg-black/90 min-h-screen w-full fixed inset-0 z-100' : '',
+          showOverlay ? 'bg-black/90 fixed inset-0 z-999 pointer-events-auto' : 'hidden',
         ].join(' ')}
         aria-hidden={!isMenuOpen}
+        onClick={handleToggle}
       ></div>
 
       <nav className={containerClassName} style={style} aria-label="Main navigation">
@@ -288,11 +301,10 @@ export default function BubbleMenu({
 
       {showOverlay && (
         <div
-          ref={overlayRef}
+          ref={containerRef}
           className={[
             'bubble-menu-items',
-            useFixedPosition ? 'fixed' : 'absolute',
-            'inset-0',
+            'fixed inset-0',
             'flex items-center justify-center',
             'pointer-events-none',
             'z-1000'
