@@ -3,6 +3,7 @@ import Navbar from '@/components/global/Navbar';
 import HeroSection from '@/sections/HeroSection';
 import AboutSection from './sections/AboutSection';
 import SkillsSection from './sections/SkillsSection';
+import ProjectsSection from './sections/ProjectsSection';
 
 import AnimatedCursor from 'react-animated-cursor'
 
@@ -133,6 +134,8 @@ export default function App() {
           <HeroSection />
           <AboutSection />
           <SkillsSection />
+          <ProjectsSection />
+          {/* Bottom breathing room */}
           <div style={{ height: '8rem' }} />
         </div>
       </div>
