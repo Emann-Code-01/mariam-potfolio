@@ -4,7 +4,7 @@ export default function HeroSection() {
 
       {/* ── Mobile layout ─────────────────────────────────────────────────── */}
       <div className="flex flex-col justify-center items-center md:hidden space-y-8 text-center">
-        {/* Portrait */}
+        {/* Portrait with Badge */}
         <div className="relative">
           <div
             className="rounded-full p-0.75 inline-block"
@@ -20,6 +20,19 @@ export default function HeroSection() {
                 className="object-cover w-52 aspect-square block rounded-full"
               />
             </div>
+          </div>
+
+          {/* Smaller mobile badge */}
+          <div
+            className="absolute -right-3 -bottom-3 w-20 h-20 rounded-full flex items-center justify-center p-2 border border-surface-subtle bg-background/80 backdrop-blur-md -rotate-12"
+            style={{ borderStyle: 'dashed' }}
+          >
+            <p className="text-center text-[7px] font-bold leading-tight tracking-[0.2em] font-body text-highlight uppercase">
+              Insights <br />
+              <span className="text-[12px] font-display italic font-semibold text-primary lowercase tracking-tight">driven</span>
+              <br />
+              by data
+            </p>
           </div>
         </div>
 
@@ -61,7 +74,7 @@ export default function HeroSection() {
               marginTop: '0.5rem',
             }}
           >
-            A analyst that turns raw data
+            An analyst that turns raw data
             <br />
             into insights that{' '}
             <em style={{ color: 'var(--primary)', fontStyle: 'italic', fontFamily: 'var(--font-display)', fontSize: '1.35rem' }}>
@@ -140,7 +153,7 @@ export default function HeroSection() {
           </div>
 
           {/* Hand-crafted floating badge */}
-          <div 
+          <div
             className="absolute -right-4 -bottom-4 lg:-right-8 lg:-bottom-6 w-28 h-28 lg:w-36 lg:h-36 rounded-full flex items-center justify-center p-4 border border-surface-subtle bg-background/80 backdrop-blur-md rotate-12 group hover:rotate-0 transition-transform duration-500 shadow-xl"
             style={{ borderStyle: 'dashed' }}
           >

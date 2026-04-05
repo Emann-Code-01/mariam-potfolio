@@ -24,10 +24,10 @@ export default function AboutSection() {
   return (
     <section
       className="relative mt-16 md:mt-32 mx-6 md:mx-0"
-      aria-labelledby="about-heading"
+      aria-labelledby="about-section"
     >
       {/* Decorative Grid Detail (Marginalia) */}
-      <div 
+      <div
         className="hidden xl:flex absolute -left-20 top-24 transform -rotate-90 origin-bottom-left items-center gap-4 text-xs font-bold tracking-[0.4em] text-faint uppercase"
         style={{ letterSpacing: '0.6em' }}
       >
@@ -36,7 +36,7 @@ export default function AboutSection() {
       </div>
 
       {/* Section divider */}
-      <div className="divider mb-12 opacity-50" />
+      <div className="divider mb-12" />
 
       {/* Eyebrow label */}
       <p className="text-eyebrow mb-4">Get to know me</p>
@@ -173,8 +173,8 @@ export default function AboutSection() {
                   aria-label={item.title}
                 >
                   <span className="text-muted group-hover:text-highlight transition-colors duration-300">
-                    {React.isValidElement(item.logo) 
-                      ? React.cloneElement(item.logo as React.ReactElement<{ size?: number }>, { size: 20 }) 
+                    {React.isValidElement(item.logo)
+                      ? React.cloneElement(item.logo as React.ReactElement<{ size?: number }>, { size: 20 })
                       : item.logo}
                   </span>
                 </a>
@@ -186,8 +186,8 @@ export default function AboutSection() {
 
             {/* Direct Actions */}
             <div className="flex flex-wrap items-center gap-8">
-              <a 
-                href="#projects" 
+              <a
+                href="#projects"
                 className="group relative inline-block text-sm font-semibold tracking-widest uppercase text-muted hover:text-primary transition-colors duration-300"
               >
                 View Projects
