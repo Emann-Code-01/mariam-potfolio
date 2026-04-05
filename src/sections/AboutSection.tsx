@@ -26,8 +26,17 @@ export default function AboutSection() {
       className="relative mt-16 md:mt-32 mx-6 md:mx-0"
       aria-labelledby="about-heading"
     >
+      {/* Decorative Grid Detail (Marginalia) */}
+      <div 
+        className="hidden xl:flex absolute -left-20 top-24 transform -rotate-90 origin-bottom-left items-center gap-4 text-xs font-bold tracking-[0.4em] text-faint uppercase"
+        style={{ letterSpacing: '0.6em' }}
+      >
+        <span className="w-12 h-px bg-faint" />
+        <span>Portfolio 2024 / 01</span>
+      </div>
+
       {/* Section divider */}
-      <div className="divider mb-12" />
+      <div className="divider mb-12 opacity-50" />
 
       {/* Eyebrow label */}
       <p className="text-eyebrow mb-4">Get to know me</p>

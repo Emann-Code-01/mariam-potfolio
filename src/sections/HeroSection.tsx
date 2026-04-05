@@ -121,8 +121,8 @@ export default function HeroSection() {
           </p>
         </div>
 
-        {/* Portrait */}
-        <div className="relative shrink-0">
+        {/* Portrait with Badge */}
+        <div className="relative shrink-0 pr-6">
           <div
             className="rounded-full p-0.75 inline-block"
             style={{
@@ -138,11 +138,26 @@ export default function HeroSection() {
               />
             </div>
           </div>
+
+          {/* Hand-crafted floating badge */}
+          <div 
+            className="absolute -right-4 -bottom-4 lg:-right-8 lg:-bottom-6 w-28 h-28 lg:w-36 lg:h-36 rounded-full flex items-center justify-center p-4 border border-surface-subtle bg-background/80 backdrop-blur-md rotate-12 group hover:rotate-0 transition-transform duration-500 shadow-xl"
+            style={{ borderStyle: 'dashed' }}
+          >
+            <p className="text-center text-[10px] lg:text-[13px] font-bold leading-tight tracking-[0.2em] font-body text-highlight uppercase">
+              Insights <br />
+              <span className="text-[18px] lg:text-[24px] font-display italic font-semibold text-primary lowercase tracking-tight">driven</span>
+              <br />
+              by data
+            </p>
+          </div>
+
           {/* Decorative ring */}
           <div
             className="absolute -inset-4 rounded-full pointer-events-none"
             style={{
               border: '1px solid var(--surface-subtle)',
+              opacity: 0.5
             }}
           />
         </div>

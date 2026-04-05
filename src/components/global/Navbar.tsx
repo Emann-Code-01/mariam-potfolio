@@ -2,9 +2,9 @@ import BubbleMenu from "../ui/BubbleMenu"
 import PillNav from '../ui/PillNav';
 
 // Palette tokens (keeping in sync with CSS variables)
-const HIGHLIGHT   = '#C96B5A';   // terracotta accent
-const SURFACE     = '#17171A';   // dark surface  (pill bg on desktop)
-const PRIMARY     = '#F5F0E8';   // warm ivory    (text / pill text)
+const HIGHLIGHT = '#C96B5A';   // terracotta accent
+const SURFACE = '#17171A';   // dark surface  (pill bg on desktop)
+const PRIMARY = '#F5F0E8';   // warm ivory    (text / pill text)
 const SURFACE_SUB = '#1E1E22';   // slightly lifted (nav track)
 
 const BG = SURFACE_SUB;          // nav bar background
@@ -52,7 +52,7 @@ const items = [
 
 export default function Navbar() {
   return (
-    <div className="sticky top-0 z-1001">
+    <div className="sticky top-3 z-1001">
       {/* ── Mobile: BubbleMenu ─────────────────────────────────────────────── */}
       <BubbleMenu
         className="md:hidden flex items-center justify-between"
@@ -84,8 +84,8 @@ export default function Navbar() {
         logo='/mariam.png'
         logoAlt="Mariam Bhadmus"
         items={[
-          { label: 'Home',    href: '/' },
-          { label: 'About',   href: '/about' },
+          { label: 'Home', href: '/' },
+          { label: 'About', href: '/about' },
           { label: 'Projects', href: '/projects' },
           { label: 'Contact', href: '/contact' },
         ]}
