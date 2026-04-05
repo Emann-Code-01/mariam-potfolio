@@ -2,6 +2,7 @@ import Particles from '@/components/ui/Particles'
 import Navbar from '@/components/global/Navbar';
 import HeroSection from '@/sections/HeroSection';
 import AboutSection from './sections/AboutSection';
+import SkillsSection from './sections/SkillsSection';
 
 import AnimatedCursor from 'react-animated-cursor'
 
@@ -131,7 +132,7 @@ export default function App() {
         <div className='max-w-7xl mx-auto relative space-y-0 px-4 md:px-8 lg:px-12'>
           <HeroSection />
           <AboutSection />
-          {/* Bottom breathing room */}
+          <SkillsSection />
           <div style={{ height: '8rem' }} />
         </div>
       </div>

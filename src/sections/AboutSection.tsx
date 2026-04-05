@@ -32,7 +32,7 @@ export default function AboutSection() {
         style={{ letterSpacing: '0.6em' }}
       >
         <span className="w-12 h-px bg-faint" />
-        <span>Portfolio 2024 / 01</span>
+        <span>Data Analyst Portfolio</span>
       </div>
 
       {/* Section divider */}
