@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import BubbleMenu from "../ui/BubbleMenu"
 import PillNav from '../ui/PillNav';
 
@@ -51,7 +52,12 @@ const items = [
 
 export default function Navbar() {
   return (
-    <div className="sticky top-3 z-1001">
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
+      className="sticky top-3 z-1001"
+    >
       <BubbleMenu
         className="md:hidden flex items-center justify-between"
         logo={
@@ -90,6 +96,6 @@ export default function Navbar() {
         pillTextColor={PILL_TEXT}
         initialLoadAnimation
       />
-    </div>
+    </motion.div>
   );
 }

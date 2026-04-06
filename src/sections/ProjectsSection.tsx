@@ -3,6 +3,9 @@ import carImage from '../assets/img/first-project.png';
 import furnitureImage from '../assets/img/second-project.png';
 import customerImage from '../assets/img/third-project.png';
 import healthImage from '../assets/img/forth-project.png';
+import ScrollReveal from '@/components/ui/ScrollReveal';
+import { StaggerContainer, StaggerItem } from '@/components/ui/StaggerReveal';
+import { motion } from 'framer-motion';
 
 interface Project {
   id: string;
@@ -95,29 +98,33 @@ export default function ProjectsSection() {
       className="relative mt-24 md:mt-48 mx-6 md:mx-0 py-20"
       aria-labelledby="projects-heading"
     >
-      <div
-        className="hidden xl:flex absolute -left-20 top-24 transform -rotate-90 origin-bottom-left items-center gap-4 text-xs font-bold tracking-[0.4em] text-faint uppercase"
-        style={{ letterSpacing: '0.6em' }}
-      >
-        <span className="w-12 h-px bg-faint" />
-        <span>Case Studies / 03</span>
-      </div>
+      <ScrollReveal direction="left" distance={40}>
+        <div
+          className="hidden xl:flex absolute -left-20 top-24 transform -rotate-90 origin-bottom-left items-center gap-4 text-xs font-bold tracking-[0.4em] text-faint uppercase"
+          style={{ letterSpacing: '0.6em' }}
+        >
+          <span className="w-12 h-px bg-faint" />
+          <span>Case Studies / 03</span>
+        </div>
+      </ScrollReveal>
 
-      <div className="divider-dashed mb-12 opacity-50" />
-      <p className="text-eyebrow mb-4">Curated Work</p>
-      <h2
-        className="mb-16 md:mb-24"
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'var(--text-display)',
-          fontWeight: 500,
-          lineHeight: 1.15,
-          letterSpacing: '-0.025em',
-          color: 'var(--primary)',
-        }}
-      >
-        Selected <span style={{ fontStyle: 'italic', color: 'var(--highlight)' }}>Projects</span>
-      </h2>
+      <ScrollReveal>
+        <div className="divider-dashed mb-12 opacity-50" />
+        <p className="text-eyebrow mb-4">Curated Work</p>
+        <h2
+          className="mb-16 md:mb-24"
+          style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'var(--text-display)',
+            fontWeight: 500,
+            lineHeight: 1.15,
+            letterSpacing: '-0.025em',
+            color: 'var(--primary)',
+          }}
+        >
+          Selected <span style={{ fontStyle: 'italic', color: 'var(--highlight)' }}>Projects</span>
+        </h2>
+      </ScrollReveal>
 
       <div className="flex flex-col gap-32">
         {PROJECTS.map((project, idx) => (
@@ -125,65 +132,83 @@ export default function ProjectsSection() {
             key={project.id}
             className="group flex flex-col gap-12 lg:gap-20 transition-opacity duration-700"
           >
-            <div className="relative overflow-hidden rounded-[2.5rem] border border-surface-subtle bg-surface shadow-2xl group-hover:border-highlight/30 transition-colors duration-500">
-              <img
-                src={project.banner}
-                alt={project.title}
-                className="w-full h-75 md:h-125 object-cover transition-transform duration-1000 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-background/90 via-background/10 to-transparent pointer-events-none" />
+            <ScrollReveal direction="up" distance={60}>
+              <div className="relative overflow-hidden rounded-[2.5rem] border border-surface-subtle bg-surface shadow-2xl group-hover:border-highlight/30 transition-colors duration-500">
+                <motion.img
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
+                  src={project.banner}
+                  alt={project.title}
+                  className="w-full h-75 md:h-125 object-cover"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-background/90 via-background/10 to-transparent pointer-events-none" />
 
-              <div className="absolute top-8 left-8 flex items-center gap-3">
-                <span className="bg-highlight text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest flex items-center gap-2">
-                  <FaTag className="w-2.5 h-2.5" /> {project.id}
-                </span>
-                <span className="bg-surface/80 backdrop-blur-md border border-white/10 text-primary/80 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest group-hover:bg-highlight group-hover:text-primary transition-colors duration-300">
-                  Case Study
-                </span>
+                <div className="absolute top-8 left-8 flex items-center gap-3">
+                  <span className="bg-highlight text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest flex items-center gap-2">
+                    <FaTag className="w-2.5 h-2.5" /> {project.id}
+                  </span>
+                  <span className="bg-surface/80 backdrop-blur-md border border-white/10 text-primary/80 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest group-hover:bg-highlight group-hover:text-primary transition-colors duration-300">
+                    Case Study
+                  </span>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
               <div className="lg:col-span-5 flex flex-col gap-8">
-                <h3 className="text-3xl md:text-5xl font-semibold leading-tight font-display text-primary tracking-tight">
-                  <span className="text-highlight font-display opacity-40 mr-4 italic text-2xl md:text-4xl">{project.id}.</span>
-                  {project.title}
-                </h3>
-                <p className="text-lg md:text-xl text-muted leading-relaxed font-body">
-                  {project.overview}
-                </p>
+                <ScrollReveal direction="right">
+                  <h3 className="text-3xl md:text-5xl font-semibold leading-tight font-display text-primary tracking-tight">
+                    <span className="text-highlight font-display opacity-40 mr-4 italic text-2xl md:text-4xl">{project.id}.</span>
+                    {project.title}
+                  </h3>
+                </ScrollReveal>
+                
+                <ScrollReveal direction="right" delay={0.1}>
+                  <p className="text-lg md:text-xl text-muted leading-relaxed font-body">
+                    {project.overview}
+                  </p>
+                </ScrollReveal>
 
-                <div className="grid grid-cols-2 gap-4 mt-4">
+                <StaggerContainer className="grid grid-cols-2 gap-4 mt-4">
                   {project.metrics.map((m, i) => (
-                    <div key={i} className="p-4 rounded-2xl bg-surface/40 border border-white/5 group-hover:border-highlight/10 transition-colors duration-300">
-                      <p className="text-xs uppercase tracking-widest text-faint font-bold mb-1">{m.label}</p>
-                      <p className="text-lg font-bold text-primary font-display">{m.value}</p>
-                    </div>
+                    <StaggerItem key={i} direction="up" distance={10}>
+                      <div className="p-4 rounded-2xl bg-surface/40 border border-white/5 group-hover:border-highlight/10 transition-colors duration-300">
+                        <p className="text-xs uppercase tracking-widest text-faint font-bold mb-1">{m.label}</p>
+                        <p className="text-lg font-bold text-primary font-display">{m.value}</p>
+                      </div>
+                    </StaggerItem>
                   ))}
-                </div>
+                </StaggerContainer>
               </div>
 
               <div className="lg:col-span-7 flex flex-col gap-10">
                 <div className="flex flex-col gap-6">
-                  <h4 className="flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-highlight">
-                    <FaChartLine /> Essential Insights
-                  </h4>
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                  <ScrollReveal direction="left">
+                    <h4 className="flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-highlight">
+                      <FaChartLine /> Essential Insights
+                    </h4>
+                  </ScrollReveal>
+                  
+                  <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
                     {project.points.map((p, i) => (
-                      <li key={i} className="flex items-start gap-4 text-primary/80 font-body leading-snug lg:text-lg">
-                        <FaCircleCheck className="shrink-0 mt-1.5 text-highlight text-sm opacity-50" />
-                        <span>{p}</span>
-                      </li>
+                      <StaggerItem key={i} direction="up" distance={15}>
+                        <li className="flex items-start gap-4 text-primary/80 font-body leading-snug lg:text-lg">
+                          <FaCircleCheck className="shrink-0 mt-1.5 text-highlight text-sm opacity-50" />
+                          <span>{p}</span>
+                        </li>
+                      </StaggerItem>
                     ))}
-                  </ul>
+                  </StaggerContainer>
                 </div>
 
-                <div className="mt-4">
-                  <span className="inline-flex items-center gap-4 text-sm font-bold uppercase tracking-widest text-primary/20 group-hover:text-highlight transition-colors duration-500 cursor-default select-none">
-                    <span className="w-12 h-px bg-white/10 group-hover:bg-highlight/50 transition-colors duration-500" />
-                    Interactive Dashboard Available on Request
-                  </span>
-                </div>
+                <ScrollReveal direction="up" delay={0.4}>
+                  <div className="mt-4">
+                    <span className="inline-flex items-center gap-4 text-sm font-bold uppercase tracking-widest text-primary/20 group-hover:text-highlight transition-colors duration-500 cursor-default select-none">
+                      <span className="w-12 h-px bg-white/10 group-hover:bg-highlight/50 transition-colors duration-500" />
+                      Interactive Dashboard Available on Request
+                    </span>
+                  </div>
+                </ScrollReveal>
               </div>
             </div>
 
@@ -196,3 +221,4 @@ export default function ProjectsSection() {
     </section>
   );
 }
+

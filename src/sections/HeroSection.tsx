@@ -1,26 +1,81 @@
+import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
+
 export default function HeroSection() {
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.9,
+        ease: [0.21, 0.47, 0.32, 0.98],
+      },
+    },
+  };
+
+  const imageVariants: Variants = {
+    hidden: { opacity: 0, scale: 0.8, rotate: -5 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      rotate: 0,
+      transition: {
+        duration: 1.2,
+        ease: [0.21, 0.47, 0.32, 0.98],
+      },
+    },
+  };
+
   return (
-    <div id="home" className="relative mt-8 md:mt-32 flex flex-col items-center gap-6 justify-center mx-6 md:mx-0">
+    <motion.div
+      id="home"
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className="relative mt-8 md:mt-32 flex flex-col items-center gap-6 justify-center mx-6 md:mx-0"
+    >
       {/* Designer Signature Watermark */}
-      <div className="hidden lg:block absolute -right-12 top-0 pointer-events-none select-none overflow-hidden h-full">
-        <span className="text-[9px] font-bold tracking-[1em] text-faint uppercase vertical-text opacity-20">
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, x: 20 },
+          visible: { opacity: 0.2, x: 0 },
+        }}
+        className="hidden lg:block absolute -right-12 top-0 pointer-events-none select-none overflow-hidden h-full"
+      >
+        <span className="text-[9px] font-bold tracking-[1em] text-faint uppercase vertical-text">
           Handcrafted by @EmannCode — 2024
         </span>
-      </div>
+      </motion.div>
 
       {/* Decorative Grid Detail (Marginalia) */}
-      <div
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, x: -20 },
+          visible: { opacity: 1, x: 0 },
+        }}
         className="hidden xl:flex absolute -left-20 top-24 transform -rotate-90 origin-bottom-left items-center gap-4 text-xs font-bold tracking-[0.4em] text-faint uppercase"
         style={{ letterSpacing: '0.6em' }}
       >
         <span className="w-12 h-px bg-faint" />
         <span>Welcome / 00</span>
-      </div>
+      </motion.div>
 
       {/* ── Mobile layout ─────────────────────────────────────────────────── */}
       <div className="flex flex-col justify-center items-center md:hidden space-y-8 text-center">
         {/* Portrait with Badge */}
-        <div className="relative">
+        <motion.div variants={imageVariants} className="relative">
           <div
             className="rounded-full p-0.75 inline-block"
             style={{
@@ -38,7 +93,10 @@ export default function HeroSection() {
           </div>
 
           {/* Smaller mobile badge */}
-          <div
+          <motion.div
+            initial={{ scale: 0, rotate: -30 }}
+            animate={{ scale: 1, rotate: -12 }}
+            transition={{ delay: 1, duration: 0.6, type: "spring" }}
             className="absolute -right-3 -bottom-3 w-20 h-20 rounded-full flex items-center justify-center p-2 border border-surface-subtle bg-background/80 backdrop-blur-md -rotate-12"
             style={{ borderStyle: 'dashed' }}
           >
@@ -48,18 +106,20 @@ export default function HeroSection() {
               <br />
               by data
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Text */}
         <div className="flex flex-col space-y-3 max-w-xs">
-          <p
+          <motion.p
+            variants={itemVariants}
             className="text-eyebrow"
             style={{ letterSpacing: '0.14em' }}
           >
             Hey there, I'm
-          </p>
-          <h1
+          </motion.p>
+          <motion.h1
+            variants={itemVariants}
             style={{
               fontFamily: 'var(--font-display)',
               fontSize: 'clamp(3rem, 14vw, 5rem)',
@@ -78,8 +138,9 @@ export default function HeroSection() {
             >
               Bhadmus
             </span>
-          </h1>
-          <p
+          </motion.h1>
+          <motion.p
+            variants={itemVariants}
             style={{
               fontFamily: 'var(--font-body)',
               fontSize: 'var(--text-lead)',
@@ -95,7 +156,7 @@ export default function HeroSection() {
             <em style={{ color: 'var(--primary)', fontStyle: 'italic', fontFamily: 'var(--font-display)', fontSize: '1.35rem' }}>
               drive decisions.
             </em>
-          </p>
+          </motion.p>
         </div>
       </div>
 
@@ -103,10 +164,11 @@ export default function HeroSection() {
       <div className="hidden md:flex items-center gap-16 lg:gap-24">
         {/* Text block */}
         <div className="flex flex-col space-y-5 max-w-xl">
-          <p className="text-eyebrow">
+          <motion.p variants={itemVariants} className="text-eyebrow">
             Hey there, I'm
-          </p>
-          <h1
+          </motion.p>
+          <motion.h1
+            variants={itemVariants}
             style={{
               fontFamily: 'var(--font-display)',
               fontSize: 'var(--text-hero)',
@@ -121,8 +183,9 @@ export default function HeroSection() {
             <span style={{ fontStyle: 'italic', color: 'var(--highlight)' }}>
               Bhadmus
             </span>
-          </h1>
-          <p
+          </motion.h1>
+          <motion.p
+            variants={itemVariants}
             style={{
               fontFamily: 'var(--font-body)',
               fontSize: 'var(--text-lead)',
@@ -146,11 +209,11 @@ export default function HeroSection() {
             >
               meaningful decisions.
             </em>
-          </p>
+          </motion.p>
         </div>
 
         {/* Portrait with Badge */}
-        <div className="relative shrink-0 pr-6">
+        <motion.div variants={imageVariants} className="relative shrink-0 pr-6">
           <div
             className="rounded-full p-0.75 inline-block"
             style={{
@@ -168,8 +231,12 @@ export default function HeroSection() {
           </div>
 
           {/* Hand-crafted floating badge */}
-          <div
-            className="absolute -right-4 -bottom-4 lg:-right-8 lg:-bottom-6 w-28 h-28 lg:w-36 lg:h-36 rounded-full flex items-center justify-center p-4 border border-surface-subtle bg-background/80 backdrop-blur-md rotate-12 group hover:rotate-0 transition-transform duration-500 shadow-xl"
+          <motion.div
+            initial={{ scale: 0, rotate: 30 }}
+            animate={{ scale: 1, rotate: 12 }}
+            transition={{ delay: 1.2, duration: 0.6, type: "spring" }}
+            whileHover={{ scale: 1.05, rotate: 0 }}
+            className="absolute -right-4 -bottom-4 lg:-right-8 lg:-bottom-6 w-28 h-28 lg:w-36 lg:h-36 rounded-full flex items-center justify-center p-4 border border-surface-subtle bg-background/80 backdrop-blur-md rotate-12 transition-transform duration-500 shadow-xl"
             style={{ borderStyle: 'dashed' }}
           >
             <p className="text-center text-[10px] lg:text-[13px] font-bold leading-tight tracking-[0.2em] font-body text-highlight uppercase">
@@ -178,18 +245,20 @@ export default function HeroSection() {
               <br />
               by data
             </p>
-          </div>
+          </motion.div>
 
           {/* Decorative ring */}
-          <div
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 0.5, scale: 1 }}
+            transition={{ delay: 0.8, duration: 1 }}
             className="absolute -inset-4 rounded-full pointer-events-none"
             style={{
               border: '1px solid var(--surface-subtle)',
-              opacity: 0.5
             }}
           />
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }
