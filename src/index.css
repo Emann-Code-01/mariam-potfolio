@@ -1,24 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
-
-@font-face {
-  font-family: "DM Sans";
-  src: url("./assests/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf")
-    format("truetype");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "DM Sans";
-  src: url("./assests/fonts/DM_Sans/DMSans-Italic-VariableFont_opsz,wght.ttf")
-    format("truetype");
-  font-weight: 100 900;
-  font-style: italic;
-  font-display: swap;
-}
-
 /* ─── Design Tokens ────────────────────────────────────────────────────────── */
 
 :root {

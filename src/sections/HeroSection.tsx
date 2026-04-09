@@ -85,7 +85,7 @@ export default function HeroSection() {
           >
             <div className="bg-surface rounded-full p-0.5 inline-block">
               <img
-                src="/mariam.png"
+                src="mariam.png"
                 alt="Mariam Bhadmus portrait"
                 className="object-cover w-52 aspect-square block rounded-full"
               />
@@ -223,7 +223,7 @@ export default function HeroSection() {
           >
             <div className="bg-surface rounded-full p-1 inline-block">
               <img
-                src="/mariam.png"
+                src="mariam.png"
                 alt="Mariam Bhadmus portrait"
                 className="object-cover w-80 lg:w-92 aspect-square block rounded-full"
               />

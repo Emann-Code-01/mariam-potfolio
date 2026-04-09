@@ -84,7 +84,7 @@ export default function Navbar() {
       />
 
       <PillNav
-        logo='/mariam.png'
+        logo='mariam.png'
         logoAlt="Mariam Bhadmus"
         items={items}
         activeHref="#home"
