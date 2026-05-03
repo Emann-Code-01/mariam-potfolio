@@ -1,73 +1,108 @@
-# React + TypeScript + Vite
+# Mariam's Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, interactive portfolio website showcasing professional work with smooth animations, 
+responsive design, and immersive 3D visual effects.
 
-Currently, two official plugins are available:
+**Live Demo:** [mariam-potfolio.vercel.app](https://mariam-potfolio.vercel.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+- **Interactive Animations** - Smooth transitions and effects using Framer Motion and GSAP
+- **3D Graphics** - Immersive 3D elements powered by Three.js
+- **Responsive Design** - Mobile-friendly layout with Material-UI components
+- **Custom Cursor** - Animated cursor for enhanced user experience
+- **Modern Stack** - Built with React 19, TypeScript, and Vite
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend Framework:** React 19.2.4 + TypeScript
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS, Material-UI, Emotion
+- **Animation:** Framer Motion, GSAP
+- **3D Graphics:** Three.js
+- **Routing:** React Router DOM
+- **Icons:** React Icons
+- **Linting:** ESLint
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
+- Node.js (v18+)
+- npm or yarn
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Clone the repository
+git clone https://github.com/Emann-Code-01/mariam-potfolio.git
+
+# Navigate to project directory
+cd mariam-potfolio
+
+# Install dependencies
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Start development server
+npm run dev
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Open browser and navigate to http://localhost:5173
 ```
+
+### Production Build
+
+```bash
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+### Linting
+
+```bash
+# Run ESLint
+npm run lint
+```
+
+## 📁 Project Structure
+
+```
+mariam-potfolio/
+├── src/              # Source code
+├── public/           # Static assets
+├── index.html        # HTML entry point
+├── vite.config.ts    # Vite configuration
+├── tsconfig.json     # TypeScript configuration
+└── package.json      # Project dependencies
+```
+
+## 🎨 Design Highlights
+
+- Smooth page transitions and hover effects
+- Advanced 3D scene rendering
+- Fully responsive mobile-first design
+- Accessibility-focused component implementation
+- Custom animations for enhanced storytelling
+
+## 📊 Language Breakdown
+
+- TypeScript: 92.5%
+- CSS: 6.2%
+- Other: 1.3%
+
+## 📝 License
+
+This project is open source and available under the MIT License.
+
+## 👤 Author
+
+[Emann-Code-01](https://github.com/Emann-Code-01)
+
+---
+
+**Note:** The React Compiler is not enabled in this template due to its impact on development and build performance. See the [React Compiler Documentation](https://react.dev/learn/react-compiler/installation) if you want to enable it.
